@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "crm:dev": "vite",
     "build": "tsc -b && vite build",
+    "crm:build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
   },
