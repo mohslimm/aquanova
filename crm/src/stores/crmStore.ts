@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import type { Artisan, Project, ProjectStatus, SiteLog } from '../types/crm';
 import { INITIAL_ARTISANS, INITIAL_PROJECTS } from '../lib/constants';
 
-export type NavigationTab = 'dashboard' | 'kanban' | 'quotes' | 'artisans' | 'documents';
+export type NavigationTab = 'dashboard' | 'kanban' | 'quotes' | 'artisans' | 'documents' | 'studio3d';
 
 interface CRMState {
   projects: Project[];

@@ -1455,3 +1455,473 @@ footer.site-footer {
         gap: 36px;
     }
 }
+
+/* ==========================================================================
+   AWWWARDS 3D STUDIO & WEBGL ENHANCEMENTS
+   ========================================================================== */
+
+/* WebGL Hero Caustics Canvas */
+.hero-gl-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.75;
+    mix-blend-mode: screen;
+}
+
+/* 3D Studio Section */
+.studio-3d-section {
+    padding: 110px 0;
+    background: radial-gradient(circle at 50% 30%, rgba(197, 160, 89, 0.05) 0%, transparent 65%), var(--bg-primary);
+    position: relative;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.studio-3d-container {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 36px;
+    align-items: stretch;
+    margin-top: 48px;
+}
+
+@media (max-width: 1024px) {
+    .studio-3d-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 3D Viewport */
+.studio-3d-viewport {
+    position: relative;
+    background: radial-gradient(circle at center, #101228 0%, #060610 85%);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px var(--gold-glow);
+    min-height: 540px;
+    height: 100%;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+}
+
+.studio-3d-viewport:active {
+    cursor: grabbing;
+}
+
+.studio-3d-viewport canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* 3D Loader Overlay */
+.studio-3d-loader {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 6, 16, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 10;
+    color: var(--gold-300);
+    font-size: 0.9rem;
+    font-family: 'Outfit', sans-serif;
+    transition: opacity 0.5s ease;
+}
+
+.studio-3d-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner-gold {
+    width: 44px;
+    height: 44px;
+    border: 3px solid rgba(197, 160, 89, 0.2);
+    border-top-color: var(--gold-400);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Floating HUD Controls */
+.studio-3d-hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.hud-badge {
+    background: rgba(15, 16, 36, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-gold);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold-300);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.hud-actions {
+    display: flex;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+.hud-btn {
+    background: rgba(15, 16, 36, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.hud-btn:hover, .hud-btn.active {
+    border-color: var(--gold-400);
+    color: var(--gold-300);
+    background: rgba(197, 160, 89, 0.15);
+}
+
+/* Hint */
+.studio-3d-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 16, 36, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+/* Interactive Hotspot Pins */
+.hotspot-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.pin-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--gold-gradient);
+    border: 2px solid #ffffff;
+    color: #120e06;
+    font-weight: 700;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px var(--gold-glow);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.25s ease;
+}
+
+.hotspot-pin:hover .pin-dot {
+    transform: scale(1.2);
+}
+
+.pin-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold-400);
+    opacity: 0;
+    animation: pinPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+    z-index: 1;
+}
+
+@keyframes pinPulse {
+    0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+.pin-popover {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: rgba(15, 16, 36, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    width: 250px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    z-index: 20;
+}
+
+.hotspot-pin:hover .pin-popover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.pin-popover strong {
+    display: block;
+    color: var(--gold-300);
+    font-size: 0.82rem;
+    margin-bottom: 4px;
+}
+
+.pin-popover p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Material Customizer Panel */
+.studio-3d-panel {
+    background: rgba(15, 16, 36, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.panel-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.panel-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.material-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.material-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: var(--transition-base);
+    text-align: left;
+    width: 100%;
+}
+
+.material-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(197, 160, 89, 0.4);
+    transform: translateX(4px);
+}
+
+.material-btn.active {
+    background: rgba(197, 160, 89, 0.12);
+    border-color: var(--gold-400);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.material-swatch {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.swatch-calacatta {
+    background: linear-gradient(135deg, #f7f6f2 0%, #ded9ce 45%, #bca586 52%, #f2efe9 100%);
+}
+
+.swatch-marquina {
+    background: linear-gradient(135deg, #111116 0%, #1e1e24 40%, #ffffff 42%, #111116 100%);
+}
+
+.swatch-gold {
+    background: linear-gradient(135deg, #dfbd7c 0%, #c5a059 50%, #9e7a32 100%);
+}
+
+.swatch-copper {
+    background: linear-gradient(135deg, #d98a6c 0%, #ba6344 50%, #7d3b23 100%);
+}
+
+.material-meta {
+    flex: 1;
+}
+
+.material-meta strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.material-meta span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.material-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    background: rgba(197, 160, 89, 0.15);
+    color: var(--gold-400);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+/* Technical Specs Card */
+.material-specs-card {
+    background: rgba(6, 6, 16, 0.6);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 24px;
+    font-size: 0.8rem;
+}
+
+.specs-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.specs-row:last-child {
+    margin-bottom: 0;
+}
+
+.specs-title {
+    color: var(--text-muted);
+}
+
+.specs-val {
+    color: var(--gold-300);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+}
+
+/* Custom Luxury Magnetic Cursor Follower */
+.cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold-400);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    pointer-events: none;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(197, 160, 89, 0.45);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, 
+                background-color 0.3s ease;
+    pointer-events: none;
+}
+
+.cursor-follower.hovering .cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+}
+
+.cursor-follower.hovering .cursor-ring {
+    width: 60px;
+    height: 60px;
+    border-color: var(--gold-400);
+    background: rgba(197, 160, 89, 0.08);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .cursor-follower {
+        display: none !important;
+    }
+}
+

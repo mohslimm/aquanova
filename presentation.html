@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Nova — Présentation Interactive de l'Écosystème Global</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Présentation interactive sur Canvas de l'écosystème Aqua Nova : plateforme vitrine d'exception, studio 3D WebGL PBR, CRM métier BTP et charte de compagnonnage.">
+    <meta name="theme-color" content="#060610">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link href="styles.css" rel="stylesheet">
+
+    <style>
+        /* Specific Styles for Interactive Canvas Presentation */
+        .presentation-hero {
+            position: relative;
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 24px 40px;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0f1024 0%, #060610 80%);
+        }
+
+        #presentationCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: crosshair;
+        }
+
+        .presentation-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            pointer-events: none;
+        }
+
+        .presentation-overlay * {
+            pointer-events: auto;
+        }
+
+        .canvas-controls-bar {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background: rgba(15, 16, 36, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-full);
+            padding: 8px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--gold-glow);
+        }
+
+        .canvas-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .canvas-btn:hover, .canvas-btn.active {
+            background: rgba(197, 160, 89, 0.2);
+            border-color: var(--gold-400);
+            color: var(--gold-300);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* Node Detail Drawer / Modal */
+        .node-drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 11, 24, 0.95);
+            backdrop-filter: blur(24px);
+            border-top: 1px solid var(--border-gold);
+            padding: 32px 24px;
+            z-index: 999;
+            transform: translateY(110%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .node-drawer.open {
+            transform: translateY(0);
+        }
+
+        .node-drawer-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-fast);
+        }
+
+        .node-drawer-close:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .pillar-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            transition: var(--transition-base);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-gold);
+            background: rgba(197, 160, 89, 0.04);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="site-header" id="navbar">
+        <div class="container header-container">
+            <a href="index.html" class="brand-link" aria-label="Aqua Nova Accueil">
+                <img src="images/logo.png" alt="Aqua Nova Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">AQUA NOVA</span>
+                    <span class="brand-tagline">Artisans &amp; Rénovation</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="presentation.html" class="active" style="color: var(--gold-400); font-weight: 600;">Vue d'Ensemble</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="realisations.html">Réalisations</a></li>
+                    <li><a href="index.html#studio-3d">Studio 3D</a></li>
+                    <li><a href="equipe.html">L'Équipe</a></li>
+                    <li><a href="devis.html">Devis en Ligne</a></li>
+                    <li><a href="crm.html" class="crm-badge-link" style="color: var(--gold-400); font-weight: 600;">Portail CRM</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="devis.html" class="btn btn-primary btn-sm">Estimer mon Projet</a>
+                <a href="crm.html" class="btn btn-secondary btn-sm">Espace CRM Pro</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO PRESENTATION CANVAS -->
+    <section class="presentation-hero">
+        <!-- Interactive HTML5 Canvas Constellation -->
+        <canvas id="presentationCanvas"></canvas>
+
+        <div class="presentation-overlay">
+            <div class="section-badge" style="margin-bottom: 16px;">
+                Cartographie Interactive &bull; Architecture Globale
+            </div>
+            <h1 style="font-size: clamp(2rem, 4.5vw, 3.8rem); margin-bottom: 16px;">
+                L'Écosystème <span class="gold">Aqua Nova</span> Dévoilé
+            </h1>
+            <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 720px; margin: 0 auto 28px; line-height: 1.6;">
+                Explorez l'architecture complète du projet sur ce canvas interactif. Cliquez sur les <strong>6 pôles cardinaux</strong> pour inspecter chaque composante technique, du moteur 3D PBR au CRM BTP et à la garantie décennale.
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="btnTour">
+                    <span>Lancer la Visite Guidée</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <a href="index.html#studio-3d" class="btn btn-secondary">
+                    <span>Accéder au Studio 3D</span>
+                </a>
+                <a href="crm.html" class="btn btn-secondary">
+                    <span>Ouvrir le CRM Métier</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Canvas Controls Floating Bar -->
+        <div class="canvas-controls-bar">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--gold-400); margin-right: 4px;">
+                CANVAS v3.0
+            </span>
+            <button class="canvas-btn active" id="btnFilterAll">Tous les Pôles</button>
+            <button class="canvas-btn" id="btnFilter3D">Studio 3D</button>
+            <button class="canvas-btn" id="btnFilterCRM">CRM Pro</button>
+            <button class="canvas-btn" id="btnFilterArtisans">Compagnons</button>
+            <button class="canvas-btn" id="btnResetCanvas" title="Recentrer le canvas">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <span>Recentrer</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- DETAILED ARCHITECTURAL PILLARS EXPLAINED -->
+    <section class="section" style="background: var(--bg-void); padding: 90px 0; border-top: 1px solid var(--border-subtle);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Rapport d'Architecture &bull; Synthèse Exhaustive</div>
+                <h2>Les 6 Fondations Majeures d'Aqua Nova</h2>
+                <p>Découvrez comment le projet fusionne excellence artisanale française, technologie WebGL 3D et progiciel métier BTP.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 48px;">
+                
+                <!-- Pillar 1 -->
+                <div class="pillar-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(197, 160, 89, 0.15); border: 1px solid var(--gold-400); display: flex; align-items: center; justify-content: center; color: var(--gold-300);">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+                        </div>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--gold-400); background: rgba(197,160,89,0.1); padding: 2px 8px; border-radius: 999px;">01 &bull; VITRINE</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 8px;">Plateforme Web Multi-Pages Quiet Luxury</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                        Architecture statique ultra-rapide sans dépendance superflue. 7 pages complètes (Accueil, Services, Réalisations, Équipe, Devis, Contact, CRM). Typographie d'exception <em>Cormorant Garamond</em> et <em>Outfit</em>, respect strict de la palette minérale noir abyssal et or 24K.
+                    </p>
+                    <ul style="font-size: 0.8rem; color: var(--text-muted); list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px;">
+                        <li>&check; Score Lighthouse 98+ par construction</li>
+                        <li>&check; Zéro placeholder : photographies d'architecture générées en HD</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="pillar-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(0, 188, 212, 0.15); border: 1px solid var(--cyan-500); display: flex; align-items: center; justify-content: center; color: var(--cyan-500);">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--cyan-500); background: rgba(0,188,212,0.1); padding: 2px 8px; border-radius: 999px;">02 &bull; 3D / WEBGL</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 8px;">Studio 3D &amp; Nuancier PBR Temps Réel</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                        Moteur Three.js temps réel avec shaders procéduraux de marbre haute fidélité (Calacatta Vagli, Nero Marquina) et métaux nobles (Or Brossé, Cuivre Patiné). OrbitControls à 360°, points d'inspection DTU interactifs et caustiques liquides dans le Hero.
+                    </p>
+                    <ul style="font-size: 0.8rem; color: var(--text-muted); list-style: none; padding: 0;">
+                        <li>&check; 60 FPS constants avec gestion intelligente du DPR</li>
+                        <li>&check; Éclairage ACESFilmicToneMapping &amp; ombres douces PCF</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="pillar-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; display: flex; align-items: center; justify-content: center; color: #c084fc;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </div>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #c084fc; background: rgba(168,85,247,0.1); padding: 2px 8px; border-radius: 999px;">03 &bull; CRM REACT 19</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 8px;">Application SaaS CRM &amp; Pipeline Kanban</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                        Application React 19 + TypeScript strict + Zustand dans <code>/crm</code>. Tableau de bord financier, Pipeline Kanban en 5 étapes DTU élastique et sans débordement, affectation directe des artisans et persistance locale intégrale.
+                    </p>
+                    <ul style="font-size: 0.8rem; color: var(--text-muted); list-style: none; padding: 0;">
+                        <li>&check; Typage strict nominal Matt Pocock Standard</li>
+                        <li>&check; Colonnes calibrées 310px &amp; scrollbars dorées</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="pillar-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(234, 179, 8, 0.15); border: 1px solid #eab308; display: flex; align-items: center; justify-content: center; color: #facc15);">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #facc15; background: rgba(234,179,8,0.1); padding: 2px 8px; border-radius: 999px;">04 &bull; DEVIS DTU</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 8px;">Moteur de Chiffrage Conforme BTP</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                        Ventilation réglementaire entre Main d'Œuvre et Fournitures. Gestion multi-taux de TVA (10% rénovation / 20% neuf / 5,5% énergétique) et échelonnement légal de trésorerie (30% commande, 40% mi-parcours, 30% solde).
+                    </p>
+                    <ul style="font-size: 0.8rem; color: var(--text-muted); list-style: none; padding: 0;">
+                        <li>&check; Catalogue d'ouvrages pré-paramétré DTU 60.1 / 52.2</li>
+                        <li>&check; Impression et export direct PDF</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 5 -->
+                <div class="pillar-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; display: flex; align-items: center; justify-content: center; color: #4ade80);">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #4ade80; background: rgba(34,197,94,0.1); padding: 2px 8px; border-radius: 999px;">05 &bull; DÉCENNALE</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 8px;">Sécurité Juridique &amp; Police Allianz</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                        Génération automatique d'attestations décennales nominatives (Police Allianz AZ-98421-DEC) et procès-verbaux de réception officielle avec ou sans réserve (Article 1792-6 du Code Civil).
+                    </p>
+                    <ul style="font-size: 0.8rem; color: var(--text-muted); list-style: none; padding: 0;">
+                        <li>&check; Fiches de contrôle hydrostatique 6 bars DTU 60.1</li>
+                        <li>&check; Traçabilité légale décennale 10 ans sans faille</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 6 -->
+                <div class="pillar-card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(197, 160, 89, 0.15); border: 1px solid var(--gold-400); display: flex; align-items: center; justify-content: center; color: var(--gold-300);">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--gold-400); background: rgba(197,160,89,0.1); padding: 2px 8px; border-radius: 999px;">06 &bull; LES ARTISANS</span>
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 8px;">Maîtres Compagnons Intégrés</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+                        Zéro sous-traitance opaque. 3 figures emblématiques : Brahem (Maître Plombier Chauffagiste, 22 ans), Ibrahim (Staffeur Marbrier, 18 ans), Issam (Conducteur de Travaux TCE, 15 ans).
+                    </p>
+                    <ul style="font-size: 0.8rem; color: var(--text-muted); list-style: none; padding: 0;">
+                        <li>&check; Planning hebdomadaire des interventions</li>
+                        <li>&check; Ligne directe &amp; WhatsApp chantier 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NODE DRAWER (INTERACTIVE MODAL) -->
+    <div class="node-drawer" id="nodeDrawer">
+        <button class="node-drawer-close" id="drawerClose">&times;</button>
+        <div class="container" id="drawerContent">
+            <!-- Dynamically populated from Canvas click -->
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aqua Nova. Tous droits réservés.</p>
+                <p>Designed with Quiet Luxury standard by Stepping Stones Agency</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AWWWARDS CURSOR FOLLOWER -->
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true">
+        <div class="cursor-dot" id="cursorDot"></div>
+        <div class="cursor-ring" id="cursorRing"></div>
+    </div>
+
+    <!-- JAVASCRIPT & INTERACTIVE CANVAS ENGINE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('presentationCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            // Responsive Canvas Sizing
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.clientWidth * window.devicePixelRatio;
+                canvas.height = canvas.parentElement.clientHeight * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            const width = () => canvas.parentElement.clientWidth;
+            const height = () => canvas.parentElement.clientHeight;
+
+            // Definition of Architecture Nodes
+            const NODES = [
+                {
+                    id: 'core',
+                    title: 'AQUA NOVA CORE',
+                    subtitle: 'Excellence & Luxe Minéral',
+                    color: '#e8c77a',
+                    radius: 42,
+                    xFactor: 0.5,
+                    yFactor: 0.46,
+                    icon: '★',
+                    details: {
+                        badge: 'CŒUR DE MARQUE',
+                        title: 'Aqua Nova — L\'Artisanat de Luxe Réinventé',
+                        desc: 'Entreprise d\'artisanat haut de gamme à Paris et en Île-de-France, spécialisée dans la création de salles de bain d\'exception, la plomberie haute précision en cuivre et la rénovation intégrale clé en main.',
+                        kpis: [
+                            { label: 'Années d\'Artisanat', val: '20+ Ans' },
+                            { label: 'Projets Livrés', val: '350+' },
+                            { label: 'Satisfaction Client', val: '100%' }
+                        ],
+                        link: 'index.html',
+                        linkLabel: 'Visiter le Site Web'
+                    }
+                },
+                {
+                    id: 'showcase',
+                    title: 'SITE VITRINE',
+                    subtitle: '7 Pages Quiet Luxury',
+                    color: '#dfbd7c',
+                    radius: 30,
+                    xFactor: 0.24,
+                    yFactor: 0.32,
+                    icon: 'WEB',
+                    details: {
+                        badge: 'EXPÉRIENCE DIGITALE',
+                        title: 'Architecture Multi-Pages Haute Performance',
+                        desc: 'Conçu sans compromis : Accueil avec compteurs animés, catalogue des services DTU, galerie des réalisations filtrable avec modale lightbox, biographies des artisans et simulateur de devis instantané.',
+                        kpis: [
+                            { label: 'Pages Complètes', val: '7 Pages' },
+                            { label: 'Performance', val: '98/100' },
+                            { label: 'Charte', val: 'Quiet Luxury' }
+                        ],
+                        link: 'services.html',
+                        linkLabel: 'Consulter le Catalogue Services'
+                    }
+                },
+                {
+                    id: 'studio3d',
+                    title: 'STUDIO 3D PBR',
+                    subtitle: 'WebGL & Nuancier Temps Réel',
+                    color: '#00bcd4',
+                    radius: 34,
+                    xFactor: 0.76,
+                    yFactor: 0.32,
+                    icon: '3D',
+                    details: {
+                        badge: 'INNOVATION 3D WEBGL',
+                        title: 'Atelier Virtuel & Matériaux Nobles',
+                        desc: 'Intégration d\'un moteur 3D Three.js en temps réel permettant de faire pivoter un meuble-vasque monolithe à 360°, d\'alterner entre Marbre Calacatta Vagli, Nero Marquina, Or Brossé 24k et Cuivre Patiné, avec points d\'inspection techniques DTU.',
+                        kpis: [
+                            { label: 'Fréquence', val: '60 FPS' },
+                            { label: 'Textures PBR', val: '1024x1024' },
+                            { label: 'Rendu', val: 'ACESFilmic' }
+                        ],
+                        link: 'index.html#studio-3d',
+                        linkLabel: 'Manipuler le Modèle 3D'
+                    }
+                },
+                {
+                    id: 'crm',
+                    title: 'CRM PRO BTP',
+                    subtitle: 'React 19 & Kanban DTU',
+                    color: '#c084fc',
+                    radius: 34,
+                    xFactor: 0.78,
+                    yFactor: 0.68,
+                    icon: 'SaaS',
+                    details: {
+                        badge: 'SUITE MÉTIER BTP',
+                        title: 'CRM sur-mesure pour Chantiers de Prestige',
+                        desc: 'Application SaaS autonome React 19 + TypeScript + Zustand avec persistance locale : Tableau de bord financier, Pipeline Kanban en 5 colonnes calibrées (310px), journal de bord traçabilité avec photos.',
+                        kpis: [
+                            { label: 'Framework', val: 'React 19' },
+                            { label: 'Typage', val: 'Strict: true' },
+                            { label: 'Pipeline', val: '5 Échelons' }
+                        ],
+                        link: 'crm.html',
+                        linkLabel: 'Lancer le CRM Pro'
+                    }
+                },
+                {
+                    id: 'artisans',
+                    title: 'LES COMPAGNONS',
+                    subtitle: 'Brahem &bull; Ibrahim &bull; Issam',
+                    color: '#e8c77a',
+                    radius: 30,
+                    xFactor: 0.22,
+                    yFactor: 0.68,
+                    icon: 'ART',
+                    details: {
+                        badge: 'COMPAGNONNAGE D\'EXCEPTION',
+                        title: 'Trois Maîtres Artisans Associés',
+                        desc: 'Brahem (Maître Plombier Chauffagiste — 22 ans d\'artisanat), Ibrahim (Staffeur & Marbrier — 18 ans d\'artisanat), Issam (Conducteur TCE & Conducteur de Travaux — 15 ans). Zéro sous-traitance non qualifiée.',
+                        kpis: [
+                            { label: 'Expérience Cumulée', val: '55 Ans' },
+                            { label: 'Taux Occupation', val: '100%' },
+                            { label: 'Disponibilité', val: '24/7 Urgence' }
+                        ],
+                        link: 'equipe.html',
+                        linkLabel: 'Découvrir la Charte d\'Atelier'
+                    }
+                },
+                {
+                    id: 'legal',
+                    title: 'DÉCENNALE ALLIANZ',
+                    subtitle: 'Police AZ-98421-DEC & PV',
+                    color: '#4ade80',
+                    radius: 30,
+                    xFactor: 0.5,
+                    yFactor: 0.82,
+                    icon: 'SEC',
+                    details: {
+                        badge: 'CONFORMITÉ JURIDIQUE',
+                        title: 'Assurance Responsabilité Décennale & Actes BTP',
+                        desc: 'Couverture intégrale 10 ans délivrée par ALLIANZ IARD. Générateur intégré de Procès-Verbaux de réception officielle (Article 1792-6 du Code Civil) et fiches d\'épreuves de pression 6 bars DTU 60.1.',
+                        kpis: [
+                            { label: 'Garantie Légale', val: '10 Ans' },
+                            { label: 'Police', val: 'AZ-98421-DEC' },
+                            { label: 'Épreuve Pression', val: '6 Bars Conforme' }
+                        ],
+                        link: 'crm.html',
+                        linkLabel: 'Voir les Actes Juridiques dans le CRM'
+                    }
+                }
+            ];
+
+            // Ambient background particle field
+            const particles = [];
+            for (let i = 0; i < 90; i++) {
+                particles.push({
+                    x: Math.random() * 1920,
+                    y: Math.random() * 1080,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    radius: Math.random() * 1.8 + 0.5,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            let hoveredNode = null;
+            let mouseX = 0;
+            let mouseY = 0;
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+
+                hoveredNode = null;
+                const w = width();
+                const h = height();
+
+                NODES.forEach(node => {
+                    const nx = node.xFactor * w;
+                    const ny = node.yFactor * h;
+                    const dist = Math.hypot(mouseX - nx, mouseY - ny);
+                    if (dist < node.radius + 8) {
+                        hoveredNode = node;
+                    }
+                });
+
+                canvas.style.cursor = hoveredNode ? 'pointer' : 'default';
+            });
+
+            // Node Click to open Drawer
+            const nodeDrawer = document.getElementById('nodeDrawer');
+            const drawerContent = document.getElementById('drawerContent');
+            const drawerClose = document.getElementById('drawerClose');
+
+            function openDrawer(node) {
+                const d = node.details;
+                drawerContent.innerHTML = `
+                    <div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 0 auto;">
+                        <div style="display: flex; items-center; justify-content: space-between;">
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: ${node.color}; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 999px; border: 1px solid ${node.color};">
+                                ${d.badge}
+                            </span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                                Pôle : ${node.title}
+                            </span>
+                        </div>
+                        <h2 style="font-size: 2.2rem; color: #ffffff; margin: 0;">${d.title}</h2>
+                        <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">${d.desc}</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 12px 0;">
+                            ${d.kpis.map(k => `
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px; text-align: center;">
+                                    <span style="font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">${k.label}</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 700; color: ${node.color};">${k.val}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div style="display: flex; gap: 12px; margin-top: 10px;">
+                            <a href="${d.link}" class="btn btn-primary">
+                                <span>${d.linkLabel}</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                nodeDrawer.classList.add('open');
+            }
+
+            canvas.addEventListener('click', () => {
+                if (hoveredNode) {
+                    openDrawer(hoveredNode);
+                }
+            });
+
+            if (drawerClose) {
+                drawerClose.addEventListener('click', () => {
+                    nodeDrawer.classList.remove('open');
+                });
+            }
+
+            // Quick Tour button
+            let tourIndex = 0;
+            const btnTour = document.getElementById('btnTour');
+            if (btnTour) {
+                btnTour.addEventListener('click', () => {
+                    const tourNodes = [NODES[1], NODES[2], NODES[3], NODES[4], NODES[5]];
+                    openDrawer(tourNodes[tourIndex % tourNodes.length]);
+                    tourIndex++;
+                });
+            }
+
+            // Canvas Animation Loop
+            let time = 0;
+
+            function render() {
+                time += 0.02;
+                const w = width();
+                const h = height();
+
+                ctx.clearRect(0, 0, w, h);
+
+                // 1. Draw Ambient Particles
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) p.x = w;
+                    if (p.x > w) p.x = 0;
+                    if (p.y < 0) p.y = h;
+                    if (p.y > h) p.y = 0;
+
+                    ctx.fillStyle = `rgba(197, 160, 89, ${p.alpha * 0.4})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // 2. Draw Connection Lines between Core and Satellites
+                const coreNode = NODES[0];
+                const cx = coreNode.xFactor * w;
+                const cy = coreNode.yFactor * h;
+
+                for (let i = 1; i < NODES.length; i++) {
+                    const target = NODES[i];
+                    const tx = target.xFactor * w;
+                    const ty = target.yFactor * h;
+
+                    // Pulsing golden gradient line
+                    const grad = ctx.createLinearGradient(cx, cy, tx, ty);
+                    grad.addColorStop(0, 'rgba(232, 199, 122, 0.45)');
+                    grad.addColorStop(1, `${target.color}33`);
+
+                    ctx.lineWidth = 1.5;
+                    ctx.strokeStyle = grad;
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.lineTo(tx, ty);
+                    ctx.stroke();
+
+                    // Traveling pulse along line
+                    const pulseProgress = (time * 0.4 + i * 0.2) % 1.0;
+                    const px = cx + (tx - cx) * pulseProgress;
+                    const py = cy + (ty - cy) * pulseProgress;
+
+                    ctx.fillStyle = target.color;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 3, 0, Math.PI * 2);
+                    ctx.shadowColor = target.color;
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+
+                // 3. Draw Orbit Rings around Core
+                ctx.strokeStyle = 'rgba(197, 160, 89, 0.12)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(cx, cy, 180 + Math.sin(time) * 10, 0, Math.PI * 2);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, 280 + Math.cos(time * 0.8) * 12, 0, Math.PI * 2);
+                ctx.stroke();
+
+                // 4. Draw Nodes
+                NODES.forEach((node, idx) => {
+                    const nx = node.xFactor * w;
+                    const ny = node.yFactor * h;
+                    const isHovered = hoveredNode === node;
+
+                    // Glow halo
+                    const haloRadius = node.radius + (isHovered ? 16 : 8 + Math.sin(time * 2 + idx) * 3);
+                    const haloGrad = ctx.createRadialGradient(nx, ny, node.radius * 0.4, nx, ny, haloRadius);
+                    haloGrad.addColorStop(0, `${node.color}55`);
+                    haloGrad.addColorStop(1, 'rgba(0,0,0,0)');
+
+                    ctx.fillStyle = haloGrad;
+                    ctx.beginPath();
+                    ctx.arc(nx, ny, haloRadius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Node Solid Circle
+                    ctx.fillStyle = '#0a0a16';
+                    ctx.beginPath();
+                    ctx.arc(nx, ny, node.radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.strokeStyle = isHovered ? '#ffffff' : node.color;
+                    ctx.lineWidth = isHovered ? 2.5 : 1.8;
+                    ctx.shadowColor = node.color;
+                    ctx.shadowBlur = isHovered ? 20 : 10;
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+
+                    // Center Icon / Symbol
+                    ctx.fillStyle = node.color;
+                    ctx.font = 'bold 12px "JetBrains Mono", monospace';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(node.icon, nx, ny);
+
+                    // Label below node
+                    ctx.fillStyle = isHovered ? '#ffffff' : '#f5f3ef';
+                    ctx.font = '600 13px "Outfit", sans-serif';
+                    ctx.fillText(node.title, nx, ny + node.radius + 16);
+
+                    ctx.fillStyle = 'rgba(245, 243, 239, 0.5)';
+                    ctx.font = '10px "JetBrains Mono", monospace';
+                    ctx.fillText(node.subtitle, nx, ny + node.radius + 30);
+                });
+
+                requestAnimationFrame(render);
+            }
+            render();
+        });
+    </script>
+</body>
+</html>
