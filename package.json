@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "npx serve -p 3000 .",
     "start": "npx serve -p 3000 .",
+    "crm:dev": "npm --prefix crm run dev",
+    "crm:build": "npm --prefix crm run build",
     "build:css": "npx tailwindcss -i ./styles.css -o ./output.css --minify",
     "lint": "npx prettier --check *.html *.css *.js",
     "format": "npx prettier --write *.html *.css *.js"
