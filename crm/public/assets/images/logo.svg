@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="goldGradLg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fae7b9" />
+      <stop offset="50%" stop-color="#c5a059" />
+      <stop offset="100%" stop-color="#8c6d32" />
+    </linearGradient>
+    <linearGradient id="cyanGradLg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" />
+      <stop offset="100%" stop-color="#0097a7" />
+    </linearGradient>
+  </defs>
+  <!-- Icon -->
+  <g transform="translate(10, 5) scale(0.7)">
+    <circle cx="50" cy="50" r="46" fill="#0f0f20" stroke="#c5a059" stroke-width="1.5" stroke-opacity="0.4"/>
+    <path d="M50 15 C50 15 24 48 24 66 C24 80.3 35.7 92 50 92 C64.3 92 76 80.3 76 66 C76 48 50 15 50 15 Z" 
+          fill="none" stroke="url(#goldGradLg)" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M50 32 L34 56 L38 59 L50 41 L62 59 L66 56 Z" fill="url(#cyanGradLg)" opacity="0.95"/>
+    <path d="M50 48 L35 70 L40 73 L50 58 L60 73 L65 70 Z" fill="url(#goldGradLg)"/>
+    <path d="M50 64 L40 79 L45 81 L50 74 L55 81 L60 79 Z" fill="url(#goldGradLg)" opacity="0.75"/>
+  </g>
+  <!-- Text Brand -->
+  <text x="95" y="44" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" font-weight="700" letter-spacing="4" fill="url(#goldGradLg)">AQUA NOVA</text>
+  <text x="97" y="60" font-family="'Outfit', sans-serif" font-size="8.5" font-weight="500" letter-spacing="3" fill="#a0a0ba">PLOMBERIE &amp; RÉNOVATION D'EXCEPTION</text>
+</svg>

@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-void: #060610;
+    --bg-primary: #0a0a16;
+    --bg-surface: #0f1024;
+    --bg-elevated: #151630;
+    --gold-500: #c5a059;
+    --gold-400: #e8c77a;
+    --gold-300: #fae7b9;
+    --gold-glow: rgba(197, 160, 89, 0.16);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(197, 160, 89, 0.32);
+  }
+
+  body {
+    background-color: #060610;
+    color: #f5f3ef;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
