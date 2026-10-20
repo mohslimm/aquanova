@@ -7,7 +7,7 @@ import {
   Layers
 } from 'lucide-react';
 import { useCRMStore } from '../../stores/crmStore';
-import type { ProjectStatus } from '../../types/crm';
+import type { ProjectStatus, ProjectCategory } from '../../types/crm';
 import { formatEUR } from '../../lib/utils';
 
 interface ColumnDef {
@@ -24,6 +24,13 @@ const COLUMNS: ColumnDef[] = [
   { status: 'in_progress', title: 'Chantiers en Exécution', color: '#00bcd4', badgeBg: 'rgba(0,188,212,0.15)' },
   { status: 'completed', title: 'Réception & Décennale', color: '#22c55e', badgeBg: 'rgba(34,197,94,0.15)' }
 ];
+
+const CATEGORY_LABELS: Record<ProjectCategory, string> = {
+  bathroom: 'Bain & Marbre',
+  plumbing: 'Plomberie',
+  plaster: 'Plafond / Staff',
+  turnkey: 'Clé en Main'
+};
 
 export const KanbanView: React.FC = () => {
   const { projects, searchQuery, moveProjectStatus, setSelectedProject } = useCRMStore();
@@ -42,7 +49,7 @@ export const KanbanView: React.FC = () => {
   const getNextStatus = (current: ProjectStatus): ProjectStatus | null => {
     const order: ProjectStatus[] = ['lead', 'survey_scheduled', 'quote_sent', 'in_progress', 'completed'];
     const idx = order.indexOf(current);
-    if (idx !== -1 && idx < order.length - 1) {
+    if (idx < order.length - 1) {
       return order[idx + 1];
     }
     return null;
@@ -58,7 +65,7 @@ export const KanbanView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-fadeIn w-full">
       {/* Title & Info */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -71,8 +78,8 @@ export const KanbanView: React.FC = () => {
         </div>
       </div>
 
-      {/* Columns Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 overflow-x-auto pb-6">
+      {/* Horizontal Scrollable Kanban Columns Container */}
+      <div className="flex gap-5 overflow-x-auto pb-6 items-start w-full">
         {COLUMNS.map((col) => {
           const colProjects = filteredProjects.filter((p) => p.status === col.status);
           const colSum = colProjects.reduce((acc, p) => acc + (p.finalAmountTTC || p.estimatedBudget), 0);
@@ -80,57 +87,57 @@ export const KanbanView: React.FC = () => {
           return (
             <div 
               key={col.status}
-              className="bg-[#0b0c1e] border border-[rgba(255,255,255,0.08)] rounded-xl flex flex-col min-w-[280px]"
+              className="w-[310px] min-w-[310px] max-w-[310px] shrink-0 bg-[#0b0c1e] border border-[rgba(255,255,255,0.08)] rounded-xl flex flex-col shadow-xl"
             >
               {/* Column Header */}
               <div className="p-4 border-b border-[rgba(255,255,255,0.06)] flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 truncate">
                   <span 
-                    className="w-2.5 h-2.5 rounded-full" 
+                    className="w-2.5 h-2.5 rounded-full shrink-0" 
                     style={{ backgroundColor: col.color }}
                   />
-                  <span className="text-xs font-semibold text-[#f5f3ef]">
+                  <span className="text-xs font-semibold text-[#f5f3ef] truncate">
                     {col.title}
                   </span>
                 </div>
-                <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-[rgba(255,255,255,0.08)] text-[rgba(245,243,239,0.7)]">
+                <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-[rgba(255,255,255,0.08)] text-[rgba(245,243,239,0.7)] shrink-0 ml-2">
                   {colProjects.length}
                 </span>
               </div>
 
               {/* Total Subtotal for Column */}
-              <div className="px-4 py-2 bg-[rgba(255,255,255,0.015)] border-b border-[rgba(255,255,255,0.04)] text-[11px] font-mono text-[rgba(245,243,239,0.5)] flex justify-between">
+              <div className="px-4 py-2 bg-[rgba(255,255,255,0.015)] border-b border-[rgba(255,255,255,0.04)] text-[11px] font-mono text-[rgba(245,243,239,0.5)] flex justify-between items-center">
                 <span>Total estimé :</span>
                 <span className="text-[#e8c77a] font-semibold">{formatEUR(colSum)}</span>
               </div>
 
               {/* Column Cards Container */}
-              <div className="p-3 space-y-3 flex-1 overflow-y-auto max-h-[70vh]">
+              <div className="p-3 space-y-3 flex-1 overflow-y-auto max-h-[72vh]">
                 {colProjects.map((p) => (
                   <div
                     key={p.id}
-                    className="bg-[#121326] border border-[rgba(255,255,255,0.07)] hover:border-[#c5a059] rounded-lg p-4 transition-all shadow-md group relative"
+                    className="bg-[#121326] border border-[rgba(255,255,255,0.07)] hover:border-[#c5a059] rounded-lg p-4 transition-all shadow-md group relative w-full overflow-hidden"
                   >
                     {/* Header reference and Category */}
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono text-[#e8c77a] font-semibold">
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] font-mono text-[#e8c77a] font-semibold shrink-0">
                         {p.reference}
                       </span>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(197,160,89,0.12)] text-[#fae7b9] font-medium uppercase">
-                        {p.category}
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(197,160,89,0.12)] text-[#fae7b9] font-medium truncate max-w-[140px] text-right">
+                        {CATEGORY_LABELS[p.category] || p.category}
                       </span>
                     </div>
 
                     {/* Title */}
                     <h4 
                       onClick={() => setSelectedProject(p)}
-                      className="text-sm font-semibold text-[#f5f3ef] group-hover:text-[#fae7b9] cursor-pointer transition-colors line-clamp-2"
+                      className="text-sm font-semibold text-[#f5f3ef] group-hover:text-[#fae7b9] cursor-pointer transition-colors line-clamp-2 leading-snug"
                     >
                       {p.title}
                     </h4>
 
                     {/* Client & Address */}
-                    <div className="mt-2 space-y-1 text-xs text-[rgba(245,243,239,0.55)]">
+                    <div className="mt-2.5 space-y-1 text-xs text-[rgba(245,243,239,0.55)]">
                       <div className="flex items-center gap-1.5 truncate">
                         <User size={12} className="text-[#c5a059] shrink-0" />
                         <span className="truncate">{p.clientName}</span>
@@ -147,18 +154,18 @@ export const KanbanView: React.FC = () => {
                         <Layers size={12} />
                         <span>{p.surfaceM2} m²</span>
                       </div>
-                      <div className="font-mono font-bold text-[#fae7b9]">
+                      <div className="font-mono font-bold text-[#fae7b9] whitespace-nowrap ml-2">
                         {formatEUR(p.finalAmountTTC || p.estimatedBudget)}
                       </div>
                     </div>
 
                     {/* Assigned Artisan & Navigation buttons */}
-                    <div className="mt-3 pt-2 border-t border-[rgba(255,255,255,0.04)] flex items-center justify-between">
-                      <div className="text-[10px] text-[#00bcd4] truncate font-medium">
+                    <div className="mt-3 pt-2 border-t border-[rgba(255,255,255,0.04)] flex items-center justify-between gap-2">
+                      <div className="text-[10px] text-[#00bcd4] truncate font-medium flex-1">
                         Artisan : {p.assignedArtisanName}
                       </div>
 
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1 shrink-0">
                         {getPrevStatus(p.status) && (
                           <button
                             title="Rétrograder le statut"
