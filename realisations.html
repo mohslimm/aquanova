@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Réalisations &amp; Chantiers d'Exception | Aqua Nova</title>
+    
+    <meta name="description" content="Explorez notre galerie de réalisations haut de gamme : salles de bain en marbre, plomberie d'art, plafonds rétroéclairés et rénovations complètes d'appartements.">
+    <meta name="theme-color" content="#060610">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="site-header" id="navbar">
+        <div class="container header-container">
+            <a href="index.html" class="brand-link" aria-label="Aqua Nova Accueil">
+                <img src="images/logo.png" alt="Aqua Nova Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">AQUA NOVA</span>
+                    <span class="brand-tagline">Artisans &amp; Rénovation</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="realisations.html" class="active">Réalisations</a></li>
+                    <li><a href="equipe.html">L'Équipe</a></li>
+                    <li><a href="devis.html">Devis en Ligne</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="crm.html" class="crm-badge-link" style="color: var(--gold-400); font-weight: 600;">Portail CRM</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="devis.html" class="btn btn-primary btn-sm">Estimer mon Projet</a>
+                <a href="crm.html" class="btn btn-secondary btn-sm" title="Espace Gestion &amp; Artisans">Espace Pro</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu Mobile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE BANNER -->
+    <section class="hero-section" style="min-height: 45vh; padding-top: 130px; padding-bottom: 40px;">
+        <div class="hero-bg">
+            <img src="images/hero-img.png" alt="Portfolio Aqua Nova" style="filter: brightness(0.25);">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container" style="text-align: center;">
+            <div class="section-badge">Galerie de Chantiers</div>
+            <h1>Nos Réalisations Récentes</h1>
+            <p style="max-width: 680px; margin: 18px auto 0 auto; font-size: 1.15rem; color: var(--text-secondary);">
+                Chaque photographie témoigne de la précision du geste artisanal, de l'élégance des matériaux choisis et de la propreté irréprochable de nos finitions.
+            </p>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio-section" style="padding-top: 40px;">
+        <div class="container">
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Tous les Chantiers</button>
+                <button class="filter-btn" data-filter="bathroom">Salles de Bain</button>
+                <button class="filter-btn" data-filter="plumbing">Génie Hydraulique</button>
+                <button class="filter-btn" data-filter="plaster">Plâtrerie &amp; Staff</button>
+                <button class="filter-btn" data-filter="renovation">Rénovations Complètes</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Card 1 -->
+                <article class="portfolio-item" data-category="bathroom">
+                    <div class="portfolio-img-box">
+                        <img src="images/img1.png" alt="Douche à l'italienne marbre Calacatta" loading="lazy">
+                        <span class="portfolio-badge">Salle de Bain</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Douche à l'Italienne Calacatta &amp; Or</h3>
+                        <p>Villa privée — 14 m² de marbre d'Italie taillé sur mesure, mitigeur thermostatique encastré, niche rétroéclairée et paroi cannelée.</p>
+                        <div style="margin-top: 14px; font-size: 0.8rem; color: var(--gold-400); font-family: 'JetBrains Mono', monospace;">
+                            Durée : 12 jours • Référent : Brahem
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="portfolio-item" data-category="plumbing">
+                    <div class="portfolio-img-box">
+                        <img src="images/img2.png" alt="Centrale technique de plomberie et chaufferie" loading="lazy">
+                        <span class="portfolio-badge">Génie Hydraulique</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Centrale Hydraulique &amp; Chaufferie Cuivre</h3>
+                        <p>Immeuble résidentiel — Réfection totale des colonnes montantes, nourrices de distribution régulées et plancher chauffant 8 zones.</p>
+                        <div style="margin-top: 14px; font-size: 0.8rem; color: var(--gold-400); font-family: 'JetBrains Mono', monospace;">
+                            Durée : 8 jours • Référent : Brahem
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="portfolio-item" data-category="plaster">
+                    <div class="portfolio-img-box">
+                        <img src="images/img3.png" alt="Faux plafond staff et gorge lumineuse" loading="lazy">
+                        <span class="portfolio-badge">Plâtrerie &amp; Staff</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Plafond Décoratif &amp; Gorges LED Indirectes</h3>
+                        <p>Penthouse — Création d'un plafond suspendu double niveau avec gorges périphériques invisibles et corniches sur mesure.</p>
+                        <div style="margin-top: 14px; font-size: 0.8rem; color: var(--gold-400); font-family: 'JetBrains Mono', monospace;">
+                            Durée : 6 jours • Référent : Ibrahim
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-img-box">
+                        <img src="images/img4.png" alt="Rénovation complète haussmannien" loading="lazy">
+                        <span class="portfolio-badge">Rénovation Globale</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Réhabilitation Globale &amp; Îlot en Marbre</h3>
+                        <p>Appartement 140 m² — Démolition cloisons, création d'une cuisine ouverte d'ébéniste, parquet point de Hongrie et plomberie neuve.</p>
+                        <div style="margin-top: 14px; font-size: 0.8rem; color: var(--gold-400); font-family: 'JetBrains Mono', monospace;">
+                            Durée : 6 semaines • Référent : Issam
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- CTA Box -->
+            <div style="margin-top: 80px; text-align: center; background: var(--bg-surface); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 48px 30px;">
+                <h3 style="font-size: 2rem; margin-bottom: 14px;">Vous envisagez une transformation similaire ?</h3>
+                <p style="max-width: 620px; margin: 0 auto 28px auto; color: var(--text-secondary);">
+                    Nos maîtres artisans se déplacent sur site pour évaluer votre projet, analyser les contraintes architecturales et vous établir un devis sous 48h.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <a href="devis.html" class="btn btn-primary">Calculer mon Devis en Ligne</a>
+                    <a href="contact.html" class="btn btn-secondary">Prendre Rendez-Vous</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand-link" style="margin-bottom: 20px;">
+                        <img src="images/logo.png" alt="Aqua Nova Logo" class="brand-logo-img">
+                        <span class="brand-title" style="font-size: 1.7rem;">AQUA NOVA</span>
+                    </div>
+                    <p style="font-size: 0.95rem; margin-bottom: 20px;">
+                        L'art de la plomberie d'exception, des salles de bain sur-mesure et de la rénovation intérieure soignée.
+                    </p>
+                    <div style="color: var(--gold-400); font-size: 0.85rem; font-weight: 600;">
+                        GARANTIE DÉCENNALE ALLIANZ • QUALIBAT RGE
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="realisations.html">Réalisations</a></li>
+                        <li><a href="equipe.html">L'Équipe</a></li>
+                        <li><a href="devis.html">Devis en Ligne</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Prestations</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Salles de Bain Marbre</a></li>
+                        <li><a href="services.html">Hydraulique Cuivre Serti</a></li>
+                        <li><a href="services.html">Gorges Lumineuses LED</a></li>
+                        <li><a href="services.html">Rénovation Clé en Main</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Atelier</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 12px;">
+                        +33 (0)1 89 71 42 00<br>
+                        contact@aquanova-renovation.com<br>
+                        Du Lundi au Samedi : 08h00 — 19h30
+                    </p>
+                    <a href="crm.html" style="display: inline-block; padding: 6px 14px; background: rgba(197, 160, 89, 0.15); border: 1px solid var(--border-gold); border-radius: var(--radius-sm); color: var(--gold-300); font-size: 0.8rem; font-weight: 600;">Portail Équipe / CRM</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aqua Nova. Tous droits réservés.</p>
+                <p>Standard d'Excellence Stepping Stones Agency</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer la vue">&times;</button>
+        <div class="lightbox-content">
+            <img src="images/img1.png" alt="Aperçu Réalisation" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

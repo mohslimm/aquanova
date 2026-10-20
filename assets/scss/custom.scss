@@ -1,0 +1,19 @@
+// Example SASS code (custom.scss)
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+body {
+    background-color: $primary-color;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.btn {
+    background-color: $secondary-color;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    &:hover {
+        background-color: darken($secondary-color, 10%);
+    }
+}

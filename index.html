@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Nova | Plomberie d'Exception &amp; Rénovation Haut de Gamme</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Aqua Nova — Maîtres artisans spécialisés en plomberie d'art, création de salles de bain sur-mesure, plâtrerie architecturale et rénovation d'intérieur complète.">
+    <meta name="keywords" content="plomberie de luxe, rénovation salle de bain, plâtre faux plafond, rénovation haut de gamme, plombier artisan, Aqua Nova">
+    <meta name="author" content="Aqua Nova - Mohamed">
+    <meta name="theme-color" content="#060610">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aqua Nova | Plomberie d'Exception &amp; Rénovation Haut de Gamme">
+    <meta property="og:description" content="Excellence artisanale, plomberie de prestige et rénovation intérieure tout corps d'état.">
+    <meta property="og:image" content="images/hero-img.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="site-header" id="navbar">
+        <div class="container header-container">
+            <a href="#home" class="brand-link" aria-label="Aqua Nova Accueil">
+                <img src="images/logo.png" alt="Aqua Nova Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">AQUA NOVA</span>
+                    <span class="brand-tagline">Artisans &amp; Rénovation</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="realisations.html">Réalisations</a></li>
+                    <li><a href="equipe.html">L'Équipe</a></li>
+                    <li><a href="devis.html">Devis en Ligne</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="crm.html" class="crm-badge-link" style="color: var(--gold-400); font-weight: 600;">Portail CRM</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="devis.html" class="btn btn-primary btn-sm">Estimer mon Projet</a>
+                <a href="crm.html" class="btn btn-secondary btn-sm" title="Espace Gestion &amp; Artisans">Espace Pro</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu Mobile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg">
+            <img src="images/hero-img.png" alt="Rénovation Salle de Bain Prestige" loading="eager">
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="section-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Artisanat d'Art &amp; Précision Technique
+                </div>
+                <h1>L'Art de la Rénovation, <br><span class="gold">l'Excellence du Métier.</span></h1>
+                <p class="hero-lead">
+                    Création de salles de bain d'exception en marbre, plomberie technique haute précision, plâtrerie architecturale et rénovation intégrale clé en main.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Demander une Étude Gratuite</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#portfolio" class="btn btn-secondary">
+                        <span>Explorer nos Réalisations</span>
+                    </a>
+                </div>
+
+                <div class="hero-metrics">
+                    <div class="metric-item">
+                        <span class="metric-number" data-count="20">20+</span>
+                        <span class="metric-label">Années d'Expérience</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number" data-count="350">350+</span>
+                        <span class="metric-label">Projets Conduits</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">10 Ans</span>
+                        <span class="metric-label">Garantie Décennale</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">100%</span>
+                        <span class="metric-label">Artisans Certifiés</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST / ACCREDITATIONS BAR -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>Garantie Décennale Allianz</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>Respect Strict des Normes DTU</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Matériaux Nobles Certifiés</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    <span>Devis Détaillé Transparent</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Nos Domaines d'Intervention</div>
+                <h2>Une Expertise Technique Complète</h2>
+                <p>Chaque spécialité est portée par un maître artisan dédié pour une maîtrise absolue des détails et de la durabilité.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Salles de Bain d'Exception</h3>
+                    <p>Conception et pose de douches à l'italienne, vasques sculptées, baignoires îlots, carrelage grand format et robinetterie encastrée de prestige.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Étanchéité sous carrelage garantie
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Marbre, quartz et pierre naturelle
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Robinetterie thermostatique haut de gamme
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <h3>Plomberie &amp; Génie Hydraulique</h3>
+                    <p>Pose et rénovation complète de réseaux sanitaires cuivre et multicouche serti, planchers chauffants, adoucisseurs d'eau et chauffe-eau connectés.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Canalisations encastrées silencieuses
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Distribution et nourrice hydro-câblée
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Dépannage d'urgence &amp; recherche de fuite
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>Plâtrerie &amp; Faux Plafonds</h3>
+                    <p>Ouvrages soignés en plaques de plâtre, plafonds suspendus avec gorges lumineuses LED intégrées, isolation phonique et cloisons de distribution.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Gorges lumineuses &amp; éclairage indirect
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Jointoiement parfait sans trace
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Isolation thermique et phonique renforcée
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Rénovation Globale Clé en Main</h3>
+                    <p>Prise en charge intégrale de vos appartements ou villas. De la démolition aux finitions d'ébénisterie, avec un interlocuteur unique tout au long du projet.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Planning synchronisé et dates fermes
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Suivi de chantier photographique régulier
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Nettoyage et réception soignée
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAVOIR-FAIRE / ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-visual-main">
+                        <img src="images/hero-img.png" alt="Savoir-faire Aqua Nova">
+                    </div>
+                    <div class="about-badge-card">
+                        <div class="num">20+</div>
+                        <div class="text">Années d'excellence artisanale en plomberie et réhabilitation intérieure.</div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="section-badge">Notre Philosophie</div>
+                    <h2>La Rigueur Industrielle, la Noblesse de l'Artisanat.</h2>
+                    <p>
+                        Fondée sur des valeurs d'intégrité, de propreté exemplaire de chantier et d'amour du travail bien fait, <strong>Aqua Nova</strong> s'est imposée comme le partenaire privilégié des particuliers exigeants et des architectes d'intérieur.
+                    </p>
+                    <p>
+                        Nous refusons les raccourcis. Chaque soudure, chaque raccordement encastré, chaque panneau de plâtre et chaque joint d'étanchéité fait l'objet d'un contrôle rigoureux avant toute étape suivante.
+                    </p>
+
+                    <div class="about-pillars">
+                        <div class="pillar-item">
+                            <h4>Propreté de Chantier</h4>
+                            <p>Protection méticuleuse des sols et dépoussiérage quotidien.</p>
+                        </div>
+                        <div class="pillar-item">
+                            <h4>Respect des Délais</h4>
+                            <p>Planning contractuel avec pénalités de retard claires.</p>
+                        </div>
+                        <div class="pillar-item">
+                            <h4>Garantie 10 Ans</h4>
+                            <p>Assurance décennale couvrant tous nos ouvrages.</p>
+                        </div>
+                        <div class="pillar-item">
+                            <h4>Interlocuteur Dédié</h4>
+                            <p>Un coordinateur unique qui pilote l'ensemble des corps d'état.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO / RÉALISATIONS -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Portfolio d'Excellence</div>
+                <h2>Nos Chantiers Récents</h2>
+                <p>Découvrez un aperçu de nos transformations intérieures et de nos installations techniques de prestige.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Tous les Projets</button>
+                <button class="filter-btn" data-filter="bathroom">Salles de Bain</button>
+                <button class="filter-btn" data-filter="plumbing">Génie Hydraulique</button>
+                <button class="filter-btn" data-filter="plaster">Plâtrerie &amp; Staff</button>
+                <button class="filter-btn" data-filter="renovation">Rénovation Globale</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Project 1 -->
+                <article class="portfolio-item" data-category="bathroom">
+                    <div class="portfolio-img-box">
+                        <img src="images/img1.png" alt="Salle de bain marbre et douche italienne" loading="lazy">
+                        <span class="portfolio-badge">Salle de Bain</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Douche à l'Italienne Calacatta</h3>
+                        <p>Placage en marbre grand format, colonne de douche thermostatique or brossé encastrée et niche rétro-éclairée.</p>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="portfolio-item" data-category="plumbing">
+                    <div class="portfolio-img-box">
+                        <img src="images/img2.png" alt="Installation réseau de chauffage et nourrices cuivre" loading="lazy">
+                        <span class="portfolio-badge">Plomberie &amp; Chauffage</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Centrale Hydraulique &amp; Plancher Chauffant</h3>
+                        <p>Réseaux cuivre serti haute pression, nourrices inox équilibrées et régulation multi-zones automatisée.</p>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="portfolio-item" data-category="plaster">
+                    <div class="portfolio-img-box">
+                        <img src="images/img3.png" alt="Faux plafond architectural avec gorges lumineuses" loading="lazy">
+                        <span class="portfolio-badge">Plâtrerie &amp; Staff</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Plafond Suspendu &amp; Gorges LED</h3>
+                        <p>Ouvrage en plaques de plâtre BA13 haute densité, intégration de bandeaux LED indirects et traitement acoustique.</p>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-img-box">
+                        <img src="images/img4.png" alt="Rénovation complète appartement haussmannien" loading="lazy">
+                        <span class="portfolio-badge">Rénovation Globale</span>
+                        <div class="portfolio-overlay-btn" title="Agrandir">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Appartement Prestige &amp; Îlot Marbre</h3>
+                        <p>Réaménagement complet des espaces, pose d'un îlot en marbre avec évier sous plan et coordination générale.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTIMATOR / CALCULATOR SECTION -->
+    <section class="estimator-section" id="estimator">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Calculateur Interactif</div>
+                <h2>Estimez Votre Projet en 30 Secondes</h2>
+                <p>Sélectionnez les paramètres de vos travaux pour obtenir une estimation instantanée indicative.</p>
+            </div>
+
+            <div class="estimator-card">
+                <div class="calc-grid">
+                    <div class="calc-group">
+                        <label for="calcService">Type de Projet</label>
+                        <select id="calcService" class="calc-select">
+                            <option value="bathroom" selected>Rénovation Salle de Bain Prestige</option>
+                            <option value="plumbing">Réseau Plomberie &amp; Chauffage</option>
+                            <option value="plaster">Plâtrerie &amp; Faux Plafonds Décoratifs</option>
+                            <option value="full">Rénovation Complète d'Intérieur</option>
+                        </select>
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="calcArea">Surface Approximative</label>
+                        <div class="range-wrap">
+                            <input type="range" id="calcArea" class="calc-range" min="5" max="150" value="15" step="1">
+                            <span class="range-val" id="areaValue">15 m²</span>
+                        </div>
+                    </div>
+
+                    <div class="calc-group" style="grid-column: 1 / -1;">
+                        <label>Gamme de Finition &amp; Matériaux</label>
+                        <div class="grade-options">
+                            <button type="button" class="grade-btn active" data-grade="prestige">
+                                Prestige (Grès Cérame &amp; Laiton)
+                            </button>
+                            <button type="button" class="grade-btn" data-grade="hautecouture">
+                                Haute Couture (Marbre &amp; Or Brossé)
+                            </button>
+                            <button type="button" class="grade-btn" data-grade="signature">
+                                Signature Architecte (Sur-Mesure)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="estimator-result">
+                    <div class="result-price-box">
+                        <span class="subtext">Budget Estimé Indicatif (Fourniture &amp; Pose)</span>
+                        <span class="price" id="calcPriceDisplay">6 500 € — 8 900 €</span>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnUseEstimate">
+                        <span>Réserver cette Estimation</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION (L'ÉQUIPE) -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Les Piliers du Métier</div>
+                <h2>Notre Équipe d'Experts Dédiée</h2>
+                <p>Des artisans qualifiés qui allient expertise de terrain, précision du geste et passion de la perfection.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Brahem -->
+                <div class="team-card">
+                    <div class="team-avatar-box">
+                        <img src="assets/images/Brahem.jpg" alt="Brahem - Expert Plomberie et Sanitaire">
+                    </div>
+                    <span class="team-role">Maître Artisan Plombier</span>
+                    <h3>Brahem</h3>
+                    <p>Spécialiste de la plomberie d'art, des installations hydro-techniques complexes et de la pose de salles de bain haut de gamme.</p>
+                    <div class="team-specialties">
+                        <span class="spec-pill">Génie Sanitaire</span>
+                        <span class="spec-pill">Réseau Cuivre</span>
+                        <span class="spec-pill">Plancher Chauffant</span>
+                    </div>
+                </div>
+
+                <!-- Ibrahim -->
+                <div class="team-card">
+                    <div class="team-avatar-box">
+                        <img src="assets/images/Ibrahim.jpg" alt="Ibrahim - Spécialiste Plâtrerie et Faux Plafonds">
+                    </div>
+                    <span class="team-role">Artisan Staffeur &amp; Plaquiste</span>
+                    <h3>Ibrahim</h3>
+                    <p>Expert en cloisons sèches, faux plafonds décoratifs avec corniches et gorges lumineuses, et isolation acoustique haute performance.</p>
+                    <div class="team-specialties">
+                        <span class="spec-pill">Faux Plafonds LED</span>
+                        <span class="spec-pill">Isolation Acoustique</span>
+                        <span class="spec-pill">Staff Architectural</span>
+                    </div>
+                </div>
+
+                <!-- Issam -->
+                <div class="team-card">
+                    <div class="team-avatar-box">
+                        <img src="assets/images/Issam.jpg" alt="Issam - Coordinateur Rénovation et Chantiers">
+                    </div>
+                    <span class="team-role">Coordinateur de Chantier TCE</span>
+                    <h3>Issam</h3>
+                    <p>Chef d'orchestre de vos projets, garant du planning, de la synchronisation des corps de métier et de la conformité aux normes DTU.</p>
+                    <div class="team-specialties">
+                        <span class="spec-pill">Pilotage de Chantier</span>
+                        <span class="spec-pill">Contrôle Qualité</span>
+                        <span class="spec-pill">Suivi Client Dédié</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Témoignages Clients</div>
+                <h2>La Satisfaction de Nos Clients</h2>
+                <p>Découvrez les retours d'expérience de propriétaires qui nous ont confié leurs rénovations de prestige.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-quote">
+                        « Rénovation complète de notre suite parentale avec salle de bain en marbre. Brahem et son équipe ont fait un travail d'une précision chirurgicale. Les finitions sont parfaites et le chantier a été rendu impeccable. »
+                    </p>
+                    <div class="client-meta">
+                        <div>
+                            <div class="client-name">Marc &amp; Sophie D.</div>
+                            <div class="client-role">Villa Privée — Rénovation Salle de Bain</div>
+                        </div>
+                        <span class="verified-tag">✓ Vérifié</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-quote">
+                        « Faux plafond dans notre pièce à vivre avec intégration de rétroéclairage LED réalisé par Ibrahim. Résultat spectaculaire, aucun raccord visible même en lumière rasante. Délais respectés au jour près ! »
+                    </p>
+                    <div class="client-meta">
+                        <div>
+                            <div class="client-name">Claire de Montmirail</div>
+                            <div class="client-role">Penthouse — Plâtrerie Architecturale</div>
+                        </div>
+                        <span class="verified-tag">✓ Vérifié</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-quote">
+                        « La coordination d'Issam sur notre appartement de 120m² a été un véritable soulagement. Remplacement intégral de la plomberie et réagencement complet. Une écoute permanente et un professionnalisme exemplaire. »
+                    </p>
+                    <div class="client-meta">
+                        <div>
+                            <div class="client-name">Laurent G.</div>
+                            <div class="client-role">Appartement Haussmannien — Rénovation Clé en Main</div>
+                        </div>
+                        <span class="verified-tag">✓ Vérifié</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Foire Aux Questions</div>
+                <h2>Questions Fréquentes</h2>
+                <p>Tout ce que vous devez savoir avant d'engager vos travaux avec Aqua Nova.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>Le devis et le premier déplacement sont-ils gratuits ?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Oui, absolument. Nous réalisons une visite technique sur place afin d'évaluer les contraintes architecturales et hydrauliques, puis vous transmettons un devis précis, chiffré poste par poste, sous 48 heures ouvrées sans aucun engagement.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quelles sont les garanties sur vos travaux ?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Tous nos ouvrages sont couverts par une <strong>assurance garantie décennale</strong> (10 ans) ainsi qu'une assurance responsabilité civile professionnelle. De plus, nos équipements bénéficient des garanties constructeurs de marques leaders (Grohe, Hansgrohe, Geberit, Porcelanosa).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quels sont les délais moyens pour une salle de bain complète ?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Une rénovation complète de salle de bain (démolition, étanchéité, plomberie, carrelage grand format et pose du mobilier) s'exécute généralement en 10 à 15 jours ouvrés consécutifs, avec un planning ferme validé à l'avance.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Prenez-vous en charge la fourniture des matériaux nobles ?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Oui. Nous disposons de partenariats exclusifs avec les meilleurs marbriers et fournisseurs de carrelage et robinetterie, ce qui nous permet de vous faire bénéficier de tarifs préférentiels et d'une traçabilité de qualité supérieure.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Contact &amp; Rendez-Vous</div>
+                <h2>Concrétisons Votre Projet</h2>
+                <p>Contactez nos maîtres artisans pour un échange personnalisé et une étude détaillée de vos besoins.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <div>
+                        <h3>L'Excellence à Votre Écoute</h3>
+                        <p style="margin-top: 14px;">
+                            Nous intervenons sur l'ensemble de la région pour tous vos projets résidentiels de prestige et chantiers techniques exigeants.
+                        </p>
+
+                        <div class="contact-cards">
+                            <div class="contact-card-item">
+                                <div class="contact-card-icon">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Téléphone Direct</div>
+                                    <div style="font-weight: 600; color: var(--gold-300);">+33 (0)1 89 71 42 00</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-card-item">
+                                <div class="contact-card-icon">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Courriel Officiel</div>
+                                    <div style="font-weight: 600; color: var(--gold-300);">contact@aquanova-renovation.com</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-card-item">
+                                <div class="contact-card-icon">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Horaires d'Atelier</div>
+                                    <div style="font-weight: 600; color: var(--gold-300);">Du Lundi au Samedi : 08h00 — 19h30</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="contactName" class="form-label">Nom Complet *</label>
+                            <input type="text" id="contactName" name="name" class="form-control" placeholder="M. / Mme Dupont" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">Adresse Courriel *</label>
+                            <input type="email" id="contactEmail" name="email" class="form-control" placeholder="dupont@exemple.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactPhone" class="form-label">Téléphone de Contact</label>
+                            <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="06 12 34 56 78">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactService" class="form-label">Prestation Souhaitée</label>
+                            <select id="contactService" name="service" class="form-control">
+                                <option value="salle-de-bain">Rénovation Salle de Bain</option>
+                                <option value="plomberie">Plomberie &amp; Génie Hydraulique</option>
+                                <option value="platrerie">Plâtrerie &amp; Faux Plafonds</option>
+                                <option value="globale">Rénovation Intérieure Complète</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">Détails de Votre Projet *</label>
+                            <textarea id="contactMessage" name="message" class="form-control" placeholder="Décrivez votre projet, la surface, vos attentes et les délais envisagés..." required></textarea>
+                        </div>
+
+                        <!-- Anti-spam Honeypot -->
+                        <div style="display: none;" aria-hidden="true">
+                            <input type="text" name="company_check" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <span>Envoyer Ma Demande de Devis</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand-link" style="margin-bottom: 20px;">
+                        <img src="images/logo.png" alt="Aqua Nova Logo" class="brand-logo-img">
+                        <span class="brand-title" style="font-size: 1.7rem;">AQUA NOVA</span>
+                    </div>
+                    <p style="font-size: 0.95rem; margin-bottom: 20px;">
+                        L'art de la plomberie de luxe, des salles de bain sur-mesure et de la rénovation intérieure soignée. Des maîtres artisans engagés pour la beauté et la durabilité de votre habitat.
+                    </p>
+                    <div style="color: var(--gold-400); font-size: 0.85rem; font-weight: 600;">
+                        GARANTIE DÉCENNALE ALLIANZ • QUALIBAT RGE
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#services">Nos Services</a></li>
+                        <li><a href="#about">Notre Savoir-Faire</a></li>
+                        <li><a href="#portfolio">Nos Réalisations</a></li>
+                        <li><a href="#estimator">Calculateur Devis</a></li>
+                        <li><a href="#team">L'Équipe</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Prestations</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Douches à l'Italienne</a></li>
+                        <li><a href="#services">Génie Hydraulique Cuivre</a></li>
+                        <li><a href="#services">Plâtrerie &amp; Gorges LED</a></li>
+                        <li><a href="#services">Planchers Chauffants</a></li>
+                        <li><a href="#services">Rénovation Clé en Main</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Coordonnées</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 12px;">
+                        <strong>Aqua Nova SAS</strong><br>
+                        Bureau Technique &amp; Ateliers<br>
+                        Service Client : +33 (0)1 89 71 42 00<br>
+                        Interventions d'urgence 24h/7j
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--gold-400);">
+                        Devis gratuit sous 48h ouvrées.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aqua Nova. Tous droits réservés.</p>
+                <p>Designed with Quiet Luxury standard by Stepping Stones Agency</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer la vue">&times;</button>
+        <div class="lightbox-content">
+            <img src="images/img1.png" alt="Aperçu Réalisation" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-notice" id="toastNotice" role="alert">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span id="toastMessage">Demande envoyée avec succès !</span>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut de page">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </button>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="script.js"></script>
+</body>
+</html>

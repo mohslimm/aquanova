@@ -1,0 +1,36 @@
+{
+  "name": "aquanova",
+  "version": "2.0.0",
+  "description": "Aqua Nova — Plomberie d'Exception, Salles de Bain Sur-Mesure & Rénovation Haut de Gamme",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -p 3000 .",
+    "start": "npx serve -p 3000 .",
+    "build:css": "npx tailwindcss -i ./styles.css -o ./output.css --minify",
+    "lint": "npx prettier --check *.html *.css *.js",
+    "format": "npx prettier --write *.html *.css *.js"
+  },
+  "keywords": [
+    "aquanova",
+    "plomberie-luxe",
+    "salle-de-bain",
+    "renovation-prestige",
+    "platrerie",
+    "quiet-luxury"
+  ],
+  "author": "Mohamed Slimani <mohslimm2001@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohslimm/aquanova.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
